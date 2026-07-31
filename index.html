@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maria Sysło-Mrówka — Pracownia Krawiecka, Kraków</title>
+<meta name="description" content="Pracownia krawiectwa damskiego Maria Sysło-Mrówka w Krakowie. Szycie na miarę od 1986 roku — kontynuacja tradycji rodzinnej od 1955 roku.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161f1a;
+    --ink-soft:#1f2b23;
+    --paper:#f3eee3;
+    --paper-dim:#e7dfcd;
+    --brass:#ad8a54;
+    --brass-light:#c9ac79;
+    --thread:#7a2a2e;
+    --pencil:#6f6b60;
+    --white:#fffdf8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',serif;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass);
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* ---------- STITCH DIVIDER (signature motif) ---------- */
+  .stitch{
+    width:100%;
+    height:14px;
+    display:block;
+  }
+  .stitch svg{width:100%;height:100%;display:block;}
+  .stitch path{
+    fill:none;
+    stroke:var(--brass);
+    stroke-width:1.4;
+    stroke-dasharray:9 8;
+    opacity:0.55;
+  }
+  .stitch.dark path{stroke:var(--paper-dim);}
+
+  /* ---------- INTRO / PRELOADER ---------- */
+  #intro{
+    position:fixed;inset:0;
+    background:var(--ink);
+    z-index:9999;
+    display:flex;
+    align-items:center;justify-content:center;
+    transition:opacity 1s ease, visibility 1s ease;
+  }
+  #intro.hide{opacity:0;visibility:hidden;pointer-events:none;}
+  #intro svg{width:min(680px,86vw);overflow:visible;}
+  .stitch-path{
+    fill:none;
+    stroke:var(--brass-light);
+    stroke-width:2.2;
+    stroke-linecap:round;
+    stroke-dasharray:1900;
+    stroke-dashoffset:1900;
+    animation:stitchDraw 2.6s cubic-bezier(.65,.05,.36,1) forwards;
+  }
+  .needle{
+    opacity:0;
+    animation:needleFade 2.6s ease forwards;
+  }
+  @keyframes stitchDraw{
+    to{stroke-dashoffset:0;}
+  }
+  @keyframes needleFade{
+    0%{opacity:0;} 8%{opacity:1;} 92%{opacity:1;} 100%{opacity:0;}
+  }
+  .intro-sub{
+    position:absolute;
+    bottom:14%;
+    left:0;right:0;
+    text-align:center;
+    font-family:'Space Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--brass);
+    opacity:0;
+    animation:subFade 1s ease 2.3s forwards;
+  }
+  @keyframes subFade{to{opacity:0.8;}}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;
+    z-index:500;
+    padding:22px 0;
+    transition:background 0.4s ease, padding 0.4s ease, box-shadow .4s ease;
+  }
+  header.scrolled{
+    background:rgba(243,238,227,0.92);
+    backdrop-filter:blur(6px);
+    padding:14px 0;
+    box-shadow:0 1px 0 rgba(22,31,26,0.08);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;}
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:1.05rem;
+    letter-spacing:0.02em;
+    color:var(--paper);
+    display:flex;flex-direction:column;line-height:1.15;
+  }
+  header.scrolled .brand{color:var(--ink);}
+  .brand small{
+    font-family:'Space Mono',monospace;
+    font-size:0.6rem;
+    letter-spacing:0.14em;
+    color:var(--brass);
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+  .navlinks{display:flex;gap:34px;font-size:0.85rem;}
+  .navlinks a{
+    color:var(--paper);
+    position:relative;
+    padding-bottom:4px;
+  }
+  header.scrolled .navlinks a{color:var(--ink);}
+  .navlinks a::after{
+    content:'';position:absolute;left:0;bottom:0;
+    width:0;height:1px;background:var(--brass);
+    transition:width 0.3s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+  .navtoggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(173,138,84,0.10), transparent 55%),
+      var(--ink);
+    color:var(--paper);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    padding:140px 0 80px;
+  }
+  .hero-tape{
+    position:absolute;top:0;left:0;right:0;height:3px;
+    background:repeating-linear-gradient(90deg,var(--brass) 0 24px, transparent 24px 48px);
+    opacity:0.5;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,7vw,5.4rem);
+    font-weight:400;
+    line-height:1.02;
+    max-width:14ch;
+  }
+  .hero h1 em{font-style:italic;color:var(--brass-light);font-weight:300;}
+  .hero-sub{
+    margin-top:28px;
+    max-width:46ch;
+    font-size:1.08rem;
+    color:#cfc6b3;
+    font-weight:300;
+  }
+  .hero-meta{
+    margin-top:56px;
+    display:flex;gap:48px;flex-wrap:wrap;
+  }
+  .hero-meta div{font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--brass);letter-spacing:0.06em;}
+  .hero-meta strong{display:block;font-family:'Fraunces',serif;font-size:1.6rem;color:var(--paper);font-weight:400;margin-top:4px;}
+  .scroll-cue{
+    position:absolute;bottom:38px;left:32px;
+    font-family:'Space Mono',monospace;
+    font-size:0.68rem;letter-spacing:0.2em;
+    color:var(--brass);text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;
+  }
+  .scroll-cue .line{width:38px;height:1px;background:var(--brass);position:relative;overflow:hidden;}
+  .scroll-cue .line::after{
+    content:'';position:absolute;left:-38px;top:0;width:38px;height:1px;background:var(--paper);
+    animation:slide 1.8s linear infinite;
+  }
+  @keyframes slide{to{left:38px;}}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:120px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:400;margin-top:10px;}
+  .section-head p{margin-top:16px;color:var(--pencil);font-size:1.02rem;max-width:56ch;}
+
+  /* ---------- ABOUT ---------- */
+  #o-pracowni{background:var(--paper);}
+  .about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:70px;align-items:start;}
+  .timeline{list-style:none;border-left:1px solid rgba(22,31,26,0.15);padding-left:28px;display:flex;flex-direction:column;gap:34px;}
+  .timeline li{position:relative;}
+  .timeline li::before{
+    content:'';position:absolute;left:-33px;top:6px;width:9px;height:9px;border-radius:50%;
+    background:var(--brass);
+  }
+  .timeline .yr{font-family:'Space Mono',monospace;font-size:0.78rem;color:var(--brass);letter-spacing:0.08em;}
+  .timeline p{margin-top:6px;font-size:1rem;max-width:44ch;}
+  .about-side{
+    background:var(--ink);
+    color:var(--paper);
+    padding:44px 38px;
+    position:relative;
+  }
+  .about-side img{width:120px;margin-bottom:22px;filter:brightness(0) invert(1) opacity(0.9);}
+  .about-side p{font-size:0.95rem;color:#cfc6b3;font-weight:300;}
+  .about-side .eyebrow{margin-bottom:12px;}
+
+  /* ---------- MARIA ---------- */
+  #maria{background:var(--ink);color:var(--paper);}
+  .maria-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:70px;align-items:center;}
+  .quote{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:300;
+    font-size:clamp(1.7rem,3vw,2.5rem);
+    line-height:1.35;
+    color:var(--paper);
+    border-left:2px solid var(--brass);
+    padding-left:28px;
+  }
+  .maria-bio p{color:#cfc6b3;font-weight:300;margin-bottom:16px;font-size:1rem;}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+  .badge{
+    font-family:'Space Mono',monospace;
+    font-size:0.68rem;letter-spacing:0.05em;
+    border:1px solid rgba(173,138,84,0.5);
+    color:var(--brass-light);
+    padding:7px 12px;
+    white-space:nowrap;
+  }
+
+  /* ---------- OFERTA ---------- */
+  #oferta{background:var(--paper);}
+  .oferta-flex{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;}
+  .swatch{
+    border:1px solid rgba(22,31,26,0.18);
+    padding:14px 20px;
+    font-size:0.95rem;
+    background:var(--white);
+    transition:transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    cursor:default;
+  }
+  .swatch:nth-child(3n+1):hover{transform:rotate(-1.5deg);}
+  .swatch:nth-child(3n+2):hover{transform:rotate(1.2deg);}
+  .swatch:nth-child(3n):hover{transform:rotate(-0.6deg);}
+  .swatch:hover{border-color:var(--brass);background:var(--paper-dim);}
+  .oferta-cols{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:64px;}
+  .oferta-cols h3{font-size:1.1rem;font-weight:500;margin-bottom:12px;font-family:'Work Sans';}
+  .oferta-cols p{color:var(--pencil);font-size:0.96rem;}
+
+  /* ---------- REALIZACJE / GALLERY ---------- */
+  #realizacje{background:var(--paper-dim);}
+  .gallery{
+    columns:4 260px;
+    column-gap:18px;
+  }
+  .gallery figure{
+    break-inside:avoid;
+    margin:0 0 18px;
+    background:var(--white);
+    padding:8px 8px 0;
+    border:1px solid rgba(22,31,26,0.1);
+    position:relative;
+    cursor:zoom-in;
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .gallery figure:nth-child(4n+1){transform:rotate(-0.8deg);}
+  .gallery figure:nth-child(4n+2){transform:rotate(0.6deg);}
+  .gallery figure:nth-child(4n+3){transform:rotate(-0.4deg);}
+  .gallery figure:hover{transform:scale(1.02) rotate(0deg);box-shadow:0 18px 34px rgba(22,31,26,0.18);z-index:2;}
+  .gallery img{width:100%;height:auto;}
+  .gallery figcaption{
+    font-family:'Space Mono',monospace;
+    font-size:0.6rem;letter-spacing:0.1em;color:var(--pencil);
+    padding:8px 2px 10px;text-transform:uppercase;
+  }
+  .lightbox{
+    position:fixed;inset:0;background:rgba(15,20,17,0.94);
+    display:none;align-items:center;justify-content:center;z-index:2000;padding:5vh 5vw;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-height:88vh;max-width:88vw;box-shadow:0 30px 60px rgba(0,0,0,0.5);}
+  .lightbox-close{
+    position:absolute;top:26px;right:32px;color:var(--paper);
+    font-family:'Space Mono',monospace;font-size:0.85rem;letter-spacing:0.1em;cursor:pointer;
+    border:1px solid rgba(243,238,227,0.4);padding:8px 14px;
+  }
+
+  /* ---------- CENNIK ---------- */
+  #cennik{background:var(--ink);color:var(--paper);}
+  .ticket{
+    display:flex;flex-wrap:wrap;gap:0;
+    border:1px dashed rgba(173,138,84,0.5);
+    max-width:760px;
+  }
+  .ticket div{flex:1 1 300px;padding:34px;}
+  .ticket div:first-child{border-right:1px dashed rgba(173,138,84,0.5);}
+  .ticket .eyebrow{margin-bottom:10px;}
+  .ticket p{color:#cfc6b3;font-weight:300;font-size:0.98rem;}
+
+  /* ---------- KONTAKT ---------- */
+  #kontakt{background:var(--paper);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  .contact-card{
+    background:var(--white);
+    border:1px solid rgba(22,31,26,0.12);
+    padding:32px;
+  }
+  .contact-card .eyebrow{margin-bottom:10px;}
+  .contact-card p{font-size:1.05rem;}
+  .contact-card a.big{font-family:'Fraunces',serif;font-size:1.5rem;display:inline-block;margin-top:6px;}
+  .contact-card a.big:hover{color:var(--thread);}
+
+  footer{
+    background:var(--ink);color:#a8a190;
+    text-align:center;padding:34px 20px;
+    font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.06em;
+  }
+  footer a{color:var(--brass-light);}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity 0.8s ease, transform 0.8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (max-width:900px){
+    .about-grid,.maria-grid,.oferta-cols,.contact-grid{grid-template-columns:1fr;}
+    .navlinks{position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);
+      background:var(--ink);flex-direction:column;justify-content:center;align-items:flex-start;
+      padding:0 40px;gap:26px;transform:translateX(100%);transition:transform 0.4s ease;}
+    .navlinks.open{transform:translateX(0);}
+    .navlinks a{color:var(--paper) !important;font-size:1.1rem;}
+    .navtoggle{
+      display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:600;background:none;border:none;
+    }
+    .navtoggle span{width:22px;height:1.5px;background:var(--paper);}
+    header.scrolled .navtoggle span{background:var(--ink);}
+    .gallery{columns:2 160px;}
+    section{padding:80px 0;}
+    .ticket div:first-child{border-right:none;border-bottom:1px dashed rgba(173,138,84,0.5);}
+  }
+</style>
+</head>
+<body>
+
+<!-- INTRO -->
+<div id="intro" aria-hidden="true">
+  <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
+    <path class="stitch-path" d="M20,150 Q60,40 110,140 T200,140 Q230,60 260,150 L300,150 Q330,50 365,150 Q395,190 420,120
+      L450,150 Q480,60 510,150 Q540,60 570,150 L600,150 Q630,70 660,150"/>
+    <g class="needle">
+      <line x1="655" y1="20" x2="655" y2="112" stroke="#c9ac79" stroke-width="2"/>
+      <ellipse cx="655" cy="16" rx="4.5" ry="8" fill="none" stroke="#c9ac79" stroke-width="2"/>
+    </g>
+  </svg>
+  <div class="intro-sub">Ściegiem, ręcznie, na miarę</div>
+</div>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="#top" class="brand">Maria Sysło‑Mrówka<small>Pracownia Krawiecka · Kraków</small></a>
+    <button class="navtoggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="navlinks" id="navLinks">
+      <a href="#o-pracowni">O pracowni</a>
+      <a href="#maria">Mistrzyni</a>
+      <a href="#oferta">Oferta</a>
+      <a href="#realizacje">Realizacje</a>
+      <a href="#cennik">Cennik</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-tape"></div>
+    <div class="wrap">
+      <p class="eyebrow">Kraków, ul. Dietla 48 — od 1986 roku</p>
+      <h1>Krawiectwo <em>szyte</em><br>na miarę Twojego pomysłu</h1>
+      <p class="hero-sub">Szyję według projektów klienta, konstruuję fasony od podstaw, stylizuję gotowe pomysły i poprawiam garderobę — z uwagą, jaką daje czterdzieści lat przy maszynie.</p>
+      <div class="hero-meta">
+        <div>Tradycja<strong>od 1955</strong></div>
+        <div>Dyplom mistrzowski<strong>1999</strong></div>
+        <div>Przewodnicząca komisji<strong>od 2004</strong></div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span class="line"></span> Przewiń</div>
+  </section>
+
+  <div class="stitch"><svg preserveAspectRatio="none" viewBox="0 0 1000 14"><path d="M0,7 L1000,7"/></svg></div>
+
+  <section id="o-pracowni">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">O pracowni</p>
+        <h2>Trzy pokolenia przy tej samej igle</h2>
+        <p>Zakład zrzeszony jest w Cechu Krawców i Pokrewnych Zawodów przy ul. Sławkowskiej 28 w Krakowie — rzemiosło potwierdzone, nie deklarowane.</p>
+      </div>
+      <div class="about-grid">
+        <ul class="timeline reveal">
+          <li><span class="yr">1955</span><p>Roman Sysło rozpoczyna działalność w branży odzieżowej — początek rodzinnej tradycji krawieckiej.</p></li>
+          <li><span class="yr">1986</span><p>Powstaje pracownia Marii Sysło‑Mrówki jako kontynuacja rzemiosła ojca, po ukończeniu technikum odzieżowego.</p></li>
+          <li><span class="yr">Dziś</span><p>Szycie na miarę, projekty klienta, stylizacje i poprawki — w tej samej pracowni przy ul. Dietla.</p></li>
+        </ul>
+        <div class="about-side reveal">
+          <p class="eyebrow">Cech Krawców i Pokrewnych Zawodów</p>
+          <img src="https://krakow-krawcowa.pl/wp-content/uploads/2020/11/krawiectwa-logo-2019-400.png" alt="Logo Cechu Krawców i Pokrewnych Zawodów">
+          <p>Członkostwo w cechu oznacza przynależność do środowiska rzemieślniczego z jasnymi standardami zawodu i wieloletnią tradycją egzaminacyjną.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="maria">
+    <div class="wrap maria-grid">
+      <p class="quote reveal">„Krawiectwo to moja pasja. Zajmuję się tym od lat.”</p>
+      <div class="maria-bio reveal">
+        <p>Technikum odzieżowe ukończyłam w 1986 roku. Dyplom czeladnika w krawiectwie damskim ciężkim otrzymałam w 1983, a w krawiectwie damskim lekkim — w 1985 roku. W kolejnych latach zdobyłam dyplom z nowoczesnego kroju i modelowania w obu specjalizacjach.</p>
+        <p>Brałam udział w ogólnopolskim konkursie usług odzieżowych i kuśnierskich „Złota Igła 87”. Dyplom mistrza w zawodzie krawieckim otrzymałam w 1999 roku.</p>
+        <p>Od 2004 roku przewodniczę Komisji Egzaminacyjnej w zawodzie krawiec przy Małopolskiej Izbie Rzemiosła i Przedsiębiorczości oraz pełnię funkcję sekretarza Ogólnopolskiej Komisji Branżowej Krawców i Rzemiosł Odzieżowo‑Włókienniczych Związku Rzemiosła Polskiego.</p>
+        <div class="badges">
+          <span class="badge">CZELADNIK · 1983 / 1985</span>
+          <span class="badge">MISTRZ KRAWIECTWA · 1999</span>
+          <span class="badge">PRZEWODNICZĄCA KOMISJI · OD 2004</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stitch dark"><svg preserveAspectRatio="none" viewBox="0 0 1000 14"><path d="M0,7 L1000,7"/></svg></div>
+
+  <section id="oferta">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Oferta</p>
+        <h2>Szycie na miarę dla każdego fasonu</h2>
+        <p>Mogę uszyć gotowy pomysł albo wystylizować go do Twoich potrzeb — od pierwszego szkicu po ostatni guzik.</p>
+      </div>
+      <div class="oferta-flex reveal">
+        <span class="swatch">Gorsety</span>
+        <span class="swatch">Topy i bluzki</span>
+        <span class="swatch">Spódnice</span>
+        <span class="swatch">Spodnie</span>
+        <span class="swatch">Sukienki</span>
+        <span class="swatch">Garsonki i żakiety</span>
+        <span class="swatch">Kostiumy</span>
+        <span class="swatch">Płaszcze</span>
+        <span class="swatch">Suknie wieczorowe</span>
+        <span class="swatch">Suknie ślubne</span>
+        <span class="swatch">Projekty autorskie</span>
+        <span class="swatch">Poprawki</span>
+      </div>
+      <div class="oferta-cols">
+        <div class="reveal">
+          <h3>Realizuję</h3>
+          <p>Projekty według pomysłów klienta, konstrukcje pod konkretny fason, wzory projektantów mody oraz kolekcje dyplomowe.</p>
+        </div>
+        <div class="reveal">
+          <h3>Poprawiam</h3>
+          <p>Wykonuję też poprawki gotowej garderoby — dopasowanie, zmianę fasonu lub drugie życie dla ulubionej rzeczy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="realizacje">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Realizacje</p>
+        <h2>Wykonane prace</h2>
+        <p>Wybór projektów z pracowni — kliknij zdjęcie, aby powiększyć.</p>
+      </div>
+      <div class="gallery reveal" id="gallery"></div>
+    </div>
+  </section>
+
+  <div class="stitch dark"><svg preserveAspectRatio="none" viewBox="0 0 1000 14"><path d="M0,7 L1000,7"/></svg></div>
+
+  <section id="cennik">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Cennik</p>
+        <h2>Wycena zależna od projektu</h2>
+      </div>
+      <div class="ticket reveal">
+        <div>
+          <p class="eyebrow">Szycie na miarę</p>
+          <p>Cena do negocjacji — zależna od stopnia trudności wykonywanego modelu.</p>
+        </div>
+        <div>
+          <p class="eyebrow">Poprawki</p>
+          <p>Cena ustalana indywidualnie, przed wykonaniem usługi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Kontakt</p>
+        <h2>Umówmy się na przymiarkę</h2>
+      </div>
+      <div class="contact-grid reveal">
+        <div class="contact-card">
+          <p class="eyebrow">Telefon</p>
+          <a class="big" href="tel:503021121">503 021 121</a><br>
+          <a class="big" href="tel:124211684">(12) 421 16 84</a>
+          <p style="margin-top:18px;">Godziny otwarcia: 9:00–16:00</p>
+        </div>
+        <div class="contact-card">
+          <p class="eyebrow">E‑mail i adres</p>
+          <a class="big" href="mailto:maria.mroweczka@op.pl">maria.mroweczka@op.pl</a>
+          <p style="margin-top:18px;">ul. Dietla 48<br>31‑039 Kraków</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-close" id="lightboxClose">ZAMKNIJ ✕</div>
+  <img id="lightboxImg" src="" alt="Powiększone zdjęcie realizacji">
+</div>
+
+<footer>
+  Copyright 2026 Pracownia Krawiecka Maria Sysło‑Mrówka · Projekt wykonał <a href="https://bluepoint-it.pl/" target="_blank" rel="noopener">BluePoint‑IT</a>
+</footer>
+
+<script>
+  // Intro hide
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('intro').classList.add('hide'), 2600);
+  });
+
+  // Header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile nav
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Gallery build
+  const images = [
+    "2020/11/48-e1606669083839.jpg","2020/11/47-e1606669054816.jpg","2020/11/46-e1606669027208.jpg",
+    "2020/11/45-e1606669000963.jpg","2018/04/numer12.jpg","2020/11/43-e1606668941300.jpg",
+    "2020/11/41-e1606668875968.jpg","2020/11/40-e1606668659226.jpg","2020/11/38-e1606668597222.jpg",
+    "2020/11/36-e1606668521625.jpg","2020/11/34-e1606668448325.jpg","2020/11/33-e1606663544589.jpg",
+    "2020/11/30-e1606663416376.jpg","2020/11/27-e1606663299508.jpg","2019/09/25-e1567966308900.jpg",
+    "2019/09/19.jpg","2018/04/lato11.jpg","2018/04/ss14.jpg","2018/04/numer9.jpg","2018/04/numer10.jpg"
+  ];
+  const base = "https://krakow-krawcowa.pl/wp-content/uploads/";
+  const gallery = document.getElementById('gallery');
+  images.forEach((path, i) => {
+    const fig = document.createElement('figure');
+    const img = document.createElement('img');
+    img.src = base + path;
+    img.alt = "Realizacja pracowni krawieckiej Maria Sysło-Mrówka, projekt " + (i+1);
+    img.loading = "lazy";
+    const cap = document.createElement('figcaption');
+    cap.textContent = "Model " + String(i+1).padStart(2,'0');
+    fig.appendChild(img);
+    fig.appendChild(cap);
+    fig.addEventListener('click', () => openLightbox(img.src, img.alt));
+    gallery.appendChild(fig);
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  function openLightbox(src, alt){
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.classList.add('open');
+  }
+  document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', e => { if(e.target === lightbox) lightbox.classList.remove('open'); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') lightbox.classList.remove('open'); });
+</script>
+</body>
+</html>
