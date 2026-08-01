@@ -15,7 +15,13 @@
 <!-- INTRO -->
 <div id="intro" aria-hidden="true">
   <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
-    <path id="stitchGuide" class="stitch-path" d="M20,150 Q60,40 110,140 T200,140 Q230,60 260,150 L300,150 Q330,50 365,150 Q395,190 420,120
+    <defs>
+      <mask id="stitchReveal" maskUnits="userSpaceOnUse" x="0" y="0" width="700" height="220">
+        <path class="reveal-wipe" d="M20,150 Q60,40 110,140 T200,140 Q230,60 260,150 L300,150 Q330,50 365,150 Q395,190 420,120
+          L450,150 Q480,60 510,150 Q540,60 570,150 L600,150 Q630,70 660,150"/>
+      </mask>
+    </defs>
+    <path class="stitch-path" mask="url(#stitchReveal)" d="M20,150 Q60,40 110,140 T200,140 Q230,60 260,150 L300,150 Q330,50 365,150 Q395,190 420,120
       L450,150 Q480,60 510,150 Q540,60 570,150 L600,150 Q630,70 660,150"/>
     <g class="needle-group">
       <g class="needle-icon">
