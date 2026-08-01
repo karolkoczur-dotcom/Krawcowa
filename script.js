@@ -51,10 +51,6 @@ if (gallery && typeof GALLERY_IMAGES !== 'undefined') {
     frame.appendChild(img);
     fig.appendChild(frame);
 
-    const cap = document.createElement('figcaption');
-    cap.textContent = 'Model ' + String(i + 1).padStart(2, '0');
-    fig.appendChild(cap);
-
     fig.addEventListener('click', () => {
       if (img.src) openLightbox(img.src, img.alt);
     });
