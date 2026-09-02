@@ -112,23 +112,14 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;}
 /* ---------- HERO ---------- */
 .hero{
   min-height:82vh;
-  background:var(--paper);
+  background:
+    linear-gradient(100deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.82) 40%, rgba(255,255,255,0.42) 75%, rgba(255,255,255,0.2) 100%),
+    url('images/header-3.jpg') center 25% / cover no-repeat;
   color:var(--ink);
   display:flex;flex-direction:column;justify-content:center;
   position:relative;padding:130px 0 70px;
 }
-.hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
-.hero-art{position:relative;}
-.hero-photo-main{
-  width:100%;aspect-ratio:4/5;object-fit:cover;
-  border:1px solid rgba(28,28,26,0.1);
-}
-.hero-photo-accent{
-  position:absolute;left:-40px;bottom:-34px;
-  width:38%;aspect-ratio:1/1;object-fit:cover;
-  border:5px solid var(--paper);
-  box-shadow:0 14px 30px rgba(28,28,26,0.16);
-}
+.hero-copy{max-width:640px;}
 .hero h1{font-size:clamp(1.9rem,4.2vw,3rem);font-weight:400;line-height:1.15;}
 .hero h1 em{font-style:italic;color:var(--brass-deep);font-weight:400;}
 .hero-sub{margin-top:20px;max-width:44ch;font-size:0.98rem;color:var(--pencil);font-weight:300;}
@@ -286,9 +277,12 @@ footer .foot-links{margin-top:8px;display:flex;gap:16px;justify-content:center;f
 .policy .updated{margin-top:-4px;}
 
 @media (max-width:900px){
-  .about-grid,.maria-grid,.oferta-cols,.contact-grid,.hero-grid{grid-template-columns:1fr;}
-  .hero-art{margin-top:40px;max-width:340px;}
-  .hero-photo-accent{left:-20px;bottom:-24px;width:36%;}
+  .about-grid,.maria-grid,.oferta-cols,.contact-grid{grid-template-columns:1fr;}
+  .hero{
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.9) 55%, rgba(255,255,255,0.55) 100%),
+      url('images/header-3.jpg') center 25% / cover no-repeat;
+  }
   .navlinks{
     position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);background:var(--white);
     flex-direction:column;justify-content:center;align-items:flex-start;padding:0 40px;gap:22px;
