@@ -117,10 +117,22 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;}
   display:flex;flex-direction:column;justify-content:center;
   position:relative;padding:130px 0 70px;
 }
-.hero h1{font-size:clamp(1.9rem,4.6vw,3.1rem);font-weight:400;line-height:1.15;max-width:15ch;}
+.hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
+.hero-art{position:relative;}
+.hero-photo-main{
+  width:100%;aspect-ratio:4/5;object-fit:cover;
+  border:1px solid rgba(28,28,26,0.1);
+}
+.hero-photo-accent{
+  position:absolute;left:-40px;bottom:-34px;
+  width:38%;aspect-ratio:1/1;object-fit:cover;
+  border:5px solid var(--paper);
+  box-shadow:0 14px 30px rgba(28,28,26,0.16);
+}
+.hero h1{font-size:clamp(1.9rem,4.2vw,3rem);font-weight:400;line-height:1.15;}
 .hero h1 em{font-style:italic;color:var(--brass-deep);font-weight:400;}
-.hero-sub{margin-top:20px;max-width:46ch;font-size:0.98rem;color:var(--pencil);font-weight:300;}
-.hero-meta{margin-top:40px;display:flex;gap:40px;flex-wrap:wrap;}
+.hero-sub{margin-top:20px;max-width:44ch;font-size:0.98rem;color:var(--pencil);font-weight:300;}
+.hero-meta{margin-top:40px;display:flex;gap:36px;flex-wrap:wrap;}
 .hero-meta div{font-family:'Space Mono',monospace;font-size:0.66rem;color:var(--brass-deep);letter-spacing:0.06em;}
 .hero-meta strong{display:block;font-family:'Fraunces',serif;font-size:1.2rem;color:var(--ink);font-weight:400;margin-top:4px;}
 .scroll-cue{
@@ -133,6 +145,13 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;}
   animation:slide 1.8s linear infinite;
 }
 @keyframes slide{to{left:34px;}}
+
+/* ---------- ATELIER STRIP (image break) ---------- */
+.atelier-strip{background:var(--paper);padding:0 0 96px;}
+.atelier-strip-img{
+  width:100%;max-height:420px;object-fit:cover;
+  margin-top:14px;border:1px solid rgba(28,28,26,0.1);
+}
 
 /* ---------- SECTION GENERIC ---------- */
 section{padding:96px 0;}
@@ -267,7 +286,9 @@ footer .foot-links{margin-top:8px;display:flex;gap:16px;justify-content:center;f
 .policy .updated{margin-top:-4px;}
 
 @media (max-width:900px){
-  .about-grid,.maria-grid,.oferta-cols,.contact-grid{grid-template-columns:1fr;}
+  .about-grid,.maria-grid,.oferta-cols,.contact-grid,.hero-grid{grid-template-columns:1fr;}
+  .hero-art{margin-top:40px;max-width:340px;}
+  .hero-photo-accent{left:-20px;bottom:-24px;width:36%;}
   .navlinks{
     position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);background:var(--white);
     flex-direction:column;justify-content:center;align-items:flex-start;padding:0 40px;gap:22px;
