@@ -100,7 +100,7 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;}
   font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.13em;
   color:var(--brass-deep);text-transform:uppercase;margin-top:2px;
 }
-.navlinks{display:flex;align-items:center;gap:30px;font-size:0.8rem;}
+.navlinks{display:flex;align-items:center;gap:30px;font-size:0.98rem;}
 .navlinks a{color:var(--ink);position:relative;padding-bottom:4px;}
 .navlinks a::after{
   content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--brass);
