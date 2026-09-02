@@ -112,14 +112,18 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;}
 /* ---------- HERO ---------- */
 .hero{
   min-height:82vh;
-  background:
-    linear-gradient(100deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.82) 40%, rgba(255,255,255,0.42) 75%, rgba(255,255,255,0.2) 100%),
-    url('images/header-3.jpg') center 25% / cover no-repeat;
+  background:url('images/header-3.jpg') center 25% / cover no-repeat;
   color:var(--ink);
   display:flex;flex-direction:column;justify-content:center;
   position:relative;padding:130px 0 70px;
 }
-.hero-copy{max-width:640px;}
+.hero-card{
+  max-width:600px;
+  background:rgba(255,255,255,0.96);
+  padding:44px 40px;
+  border-left:3px solid var(--brass);
+  box-shadow:0 24px 60px rgba(28,28,26,0.18);
+}
 .hero h1{font-size:clamp(1.9rem,4.2vw,3rem);font-weight:400;line-height:1.15;}
 .hero h1 em{font-style:italic;color:var(--brass-deep);font-weight:400;}
 .hero-sub{margin-top:20px;max-width:44ch;font-size:0.98rem;color:var(--pencil);font-weight:300;}
@@ -129,6 +133,7 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;}
 .scroll-cue{
   position:absolute;bottom:32px;left:32px;font-family:'Space Mono',monospace;font-size:0.62rem;
   letter-spacing:0.18em;color:var(--brass-deep);text-transform:uppercase;display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,0.85);padding:6px 12px;
 }
 .scroll-cue .line{width:34px;height:1px;background:var(--brass);position:relative;overflow:hidden;}
 .scroll-cue .line::after{
@@ -139,9 +144,17 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;}
 
 /* ---------- ATELIER STRIP (image break) ---------- */
 .atelier-strip{background:var(--paper);padding:0 0 96px;}
+.atelier-frame{position:relative;margin-top:14px;}
 .atelier-strip-img{
   width:100%;max-height:420px;object-fit:cover;
-  margin-top:14px;border:1px solid rgba(28,28,26,0.1);
+  border:1px solid rgba(28,28,26,0.1);
+}
+.atelier-tag{
+  position:absolute;left:0;bottom:0;
+  background:rgba(255,255,255,0.94);
+  font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--brass-deep);padding:10px 16px;
+  border-top:1px solid rgba(28,28,26,0.1);border-right:1px solid rgba(28,28,26,0.1);
 }
 
 /* ---------- SECTION GENERIC ---------- */
@@ -278,11 +291,7 @@ footer .foot-links{margin-top:8px;display:flex;gap:16px;justify-content:center;f
 
 @media (max-width:900px){
   .about-grid,.maria-grid,.oferta-cols,.contact-grid{grid-template-columns:1fr;}
-  .hero{
-    background:
-      linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.9) 55%, rgba(255,255,255,0.55) 100%),
-      url('images/header-3.jpg') center 25% / cover no-repeat;
-  }
+  .hero-card{max-width:100%;padding:32px 26px;}
   .navlinks{
     position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);background:var(--white);
     flex-direction:column;justify-content:center;align-items:flex-start;padding:0 40px;gap:22px;
