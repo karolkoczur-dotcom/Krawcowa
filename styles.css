@@ -207,15 +207,15 @@ section{padding:96px 0;}
 .oferta-cols p{color:var(--pencil);font-size:0.88rem;}
 
 /* ---------- REALIZACJE: przeplatane bloki edytorialne + Instagram CTA ---------- */
-#realizacje{background:var(--paper-dim);padding-bottom:0;}
+#realizacje{background:var(--paper);padding-bottom:0;}
 .editorial-block{
   display:grid;grid-template-columns:1.05fr 1fr;align-items:center;
-  max-width:1500px;margin:0 auto 4px;min-height:420px;
+  max-width:1500px;margin:0 auto 4px;min-height:340px;
 }
 .editorial-block.reverse{grid-template-columns:1fr 1.05fr;}
 .editorial-media{order:1;height:100%;overflow:hidden;align-self:stretch;}
 .editorial-block.reverse .editorial-media{order:2;}
-.editorial-media img{width:100%;height:100%;min-height:420px;object-fit:cover;display:block;}
+.editorial-media img{width:100%;height:100%;min-height:340px;object-fit:cover;display:block;}
 .editorial-text{order:2;padding:40px 64px;}
 .editorial-block.reverse .editorial-text{order:1;}
 .editorial-text h3{font-size:clamp(1.2rem,2vw,1.55rem);font-weight:500;margin:8px 0 12px;}
@@ -232,8 +232,8 @@ section{padding:96px 0;}
 .btn-instagram:hover{background:var(--brass);color:var(--white);}
 
 /* ---------- CENNIK ---------- */
-#cennik{background:var(--paper);color:var(--ink);}
-.ticket{display:flex;flex-wrap:wrap;gap:0;border:1px dashed var(--brass);max-width:720px;}
+#cennik{background:var(--paper-dim);color:var(--ink);}
+.ticket{display:flex;flex-wrap:wrap;gap:0;border:1px dashed var(--brass);max-width:720px;background:var(--white);}
 .ticket div{flex:1 1 300px;padding:26px;}
 .ticket div:first-child{border-right:1px dashed var(--brass);}
 .ticket .eyebrow{margin-bottom:7px;}
@@ -273,7 +273,7 @@ footer .foot-links{margin-top:8px;display:flex;gap:16px;justify-content:center;f
   .editorial-block,.editorial-block.reverse{grid-template-columns:1fr;min-height:0;}
   .editorial-media,.editorial-block.reverse .editorial-media{order:1;}
   .editorial-text,.editorial-block.reverse .editorial-text{order:2;padding:28px 28px 40px;}
-  .editorial-media img{min-height:280px;}
+  .editorial-media img{min-height:230px;}
   .navlinks{
     position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);background:var(--white);
     flex-direction:column;justify-content:center;align-items:flex-start;padding:0 40px;gap:22px;
