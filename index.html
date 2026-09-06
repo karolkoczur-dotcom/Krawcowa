@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -149,14 +149,54 @@
     </div>
   </section>
 
-  <section id="realizacje">
+  <section id="realizacje" class="realizacje">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Realizacje</p>
-        <h2>Wykonane prace</h2>
-        <p>45 projektów uszytych w pracowni — od sukien wieczorowych po codzienne fasony. Kliknij zdjęcie, aby powiększyć.</p>
+        <h2>Przykładowe realizacje</h2>
+        <p>Kilka projektów z pracowni — pełne portfolio i najnowsze prace publikuję na Instagramie.</p>
       </div>
-      <div class="gallery reveal" id="gallery"></div>
+    </div>
+
+    <div class="editorial-block reveal">
+      <div class="editorial-media">
+        <img src="images/1193.jpg" alt="Realizacja pracowni krawieckiej — suknia wieczorowa" loading="lazy" width="700" height="560">
+      </div>
+      <div class="editorial-text">
+        <p class="eyebrow">Suknie wieczorowe</p>
+        <h3>Krój, który podkreśla sylwetkę</h3>
+        <p>Model konsultowany od pierwszego szkicu — dobór tkaniny, linii i wykończenia dopasowany do klientki, nie do szablonu.</p>
+      </div>
+    </div>
+
+    <div class="editorial-block reverse reveal">
+      <div class="editorial-media">
+        <img src="images/lato11.jpg" alt="Realizacja pracowni krawieckiej — fason sezonowy" loading="lazy" width="700" height="560">
+      </div>
+      <div class="editorial-text">
+        <p class="eyebrow">Fasony sezonowe</p>
+        <h3>Lekkie tkaniny, precyzyjne wykonanie</h3>
+        <p>Od letnich sukienek po garsonki na chłodniejsze dni — każdy sezon ma swoje fasony i swoje tkaniny.</p>
+      </div>
+    </div>
+
+    <div class="editorial-block reveal">
+      <div class="editorial-media">
+        <img src="images/numer9.jpg" alt="Realizacja pracowni krawieckiej — projekt autorski" loading="lazy" width="700" height="560">
+      </div>
+      <div class="editorial-text">
+        <p class="eyebrow">Projekty autorskie</p>
+        <h3>Twój pomysł, moje wykonanie</h3>
+        <p>Przynosisz szkic, zdjęcie inspiracji albo tylko pomysł w głowie — reszta dzieje się w pracowni.</p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="instagram-cta reveal">
+        <p class="eyebrow">Więcej realizacji</p>
+        <h3>Pełne portfolio na Instagramie</h3>
+        <a class="btn-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener">Odwiedź profil na Instagramie →</a>
+      </div>
     </div>
   </section>
 
@@ -204,10 +244,6 @@
   </section>
 </main>
 
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-close" id="lightboxClose">ZAMKNIJ ✕</div>
-  <img id="lightboxImg" src="" alt="Powiększone zdjęcie realizacji">
-</div>
 
 <footer>
   Copyright 2026 Pracownia Krawiecka Maria Sysło‑Mrówka · Projekt wykonał <a href="https://bluepoint-it.pl/" target="_blank" rel="noopener">BluePoint‑IT</a>
@@ -216,7 +252,6 @@
   </div>
 </footer>
 
-<script src="gallery-data.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
