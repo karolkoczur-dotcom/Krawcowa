@@ -1,11 +1,3 @@
-// ---------- Intro ----------
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const intro = document.getElementById('intro');
-    if (intro) intro.classList.add('hide');
-  }, 1900);
-});
-
 // ---------- Header scroll state ----------
 const header = document.getElementById('siteHeader');
 if (header) {
@@ -28,4 +20,4 @@ if (navToggle && navLinks) {
 const revealIO = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+document.querySelectorAll('.reveal, .reveal-section').forEach(el => revealIO.observe(el));
