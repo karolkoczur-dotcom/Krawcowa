@@ -42,46 +42,6 @@ img{max-width:100%;display:block;}
 .stitch path{fill:none;stroke:var(--brass);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:10 9;opacity:0.5;}
 .stitch.dark path{stroke:var(--brass-deep);opacity:0.35;}
 
-/* ---------- INTRO / PRELOADER (light, quiet) ---------- */
-#intro{
-  position:fixed;inset:0;
-  background:var(--paper);
-  z-index:9999;
-  display:flex;
-  align-items:center;justify-content:center;
-  transition:opacity 0.8s ease, visibility 0.8s ease;
-}
-#intro.hide{opacity:0;visibility:hidden;pointer-events:none;}
-#intro svg{width:min(560px,80vw);overflow:visible;}
-.stitch-path{
-  fill:none;
-  stroke:var(--brass-deep);
-  stroke-width:2.6;
-  stroke-linecap:round;
-  stroke-dasharray:14 11;
-}
-.reveal-wipe{
-  fill:none;
-  stroke:#fff;
-  stroke-width:34;
-  stroke-linecap:round;
-  stroke-dasharray:1900;
-  stroke-dashoffset:1900;
-  animation:stitchDraw 1.9s cubic-bezier(.65,.05,.36,1) forwards;
-}
-.needle-icon line{stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;}
-.needle-icon ellipse{stroke:var(--ink);stroke-width:2.2;fill:none;}
-.needle-group{opacity:0;animation:needleFade 1.9s ease forwards;}
-@keyframes stitchDraw{to{stroke-dashoffset:0;}}
-@keyframes needleFade{0%{opacity:0;} 8%{opacity:1;} 92%{opacity:1;} 100%{opacity:0;}}
-.intro-sub{
-  position:absolute;bottom:16%;left:0;right:0;text-align:center;
-  font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.28em;
-  text-transform:uppercase;color:var(--brass-deep);opacity:0;
-  animation:subFade 0.8s ease 1.6s forwards;
-}
-@keyframes subFade{to{opacity:0.85;}}
-
 /* ---------- NAV ---------- */
 header{
   position:fixed;top:0;left:0;right:0;z-index:500;padding:20px 0;
@@ -114,17 +74,33 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;}
 /* ---------- HERO ---------- */
 .hero{
   min-height:82vh;
-  background:url('images/header-3.jpg') center 25% / cover no-repeat;
   color:var(--ink);
   display:flex;flex-direction:column;justify-content:center;
   position:relative;padding:130px 0 70px;
+  overflow:hidden;
+}
+.hero-bg-wrap{position:absolute;inset:0;overflow:hidden;z-index:0;}
+.hero-bg-img{
+  width:100%;height:100%;object-fit:cover;object-position:center 35%;
+  transform:scale(1);
+  animation:heroSlowZoom 24s ease-in-out infinite alternate;
+}
+@keyframes heroSlowZoom{
+  0%{transform:scale(1) translate(0,0);}
+  100%{transform:scale(1.09) translate(-1%,-1%);}
 }
 .hero-card{
+  position:relative;z-index:1;
   max-width:680px;
   background:rgba(255,255,255,0.96);
   padding:48px 46px;
   border-left:3px solid var(--brass);
   box-shadow:0 24px 60px rgba(28,28,26,0.18);
+  animation:heroCardIn 1s ease 0.15s both;
+}
+@keyframes heroCardIn{
+  from{opacity:0;transform:translateY(18px);}
+  to{opacity:1;transform:translateY(0);}
 }
 .hero h1{font-size:clamp(1.9rem,4.2vw,3rem);font-weight:400;line-height:1.15;}
 .hero h1 em{font-style:italic;color:var(--brass-deep);font-weight:400;}
@@ -135,7 +111,7 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;}
 .scroll-cue{
   position:absolute;bottom:32px;left:32px;font-family:'Space Mono',monospace;font-size:0.62rem;
   letter-spacing:0.18em;color:var(--brass-deep);text-transform:uppercase;display:flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,0.85);padding:6px 12px;
+  background:rgba(255,255,255,0.85);padding:6px 12px;z-index:1;
 }
 .scroll-cue .line{width:34px;height:1px;background:var(--brass);position:relative;overflow:hidden;}
 .scroll-cue .line::after{
@@ -258,8 +234,10 @@ footer{
 footer a{color:var(--brass-light);}
 footer .foot-links{margin-top:8px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
 
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.8s ease, transform 0.8s ease;}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.9s cubic-bezier(.22,.68,0,1), transform 0.9s cubic-bezier(.22,.68,0,1);}
 .reveal.in{opacity:1;transform:translateY(0);}
+.reveal-section{opacity:0;transform:translateY(14px);transition:opacity 1.1s cubic-bezier(.22,.68,0,1), transform 1.1s cubic-bezier(.22,.68,0,1);}
+.reveal-section.in{opacity:1;transform:translateY(0);}
 
 /* ---------- SIMPLE / POLICY PAGE ---------- */
 .policy{background:var(--paper);padding:140px 0 80px;}
