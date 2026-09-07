@@ -13,30 +13,6 @@
 </head>
 <body>
 
-<!-- INTRO -->
-<div id="intro" aria-hidden="true">
-  <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <mask id="stitchReveal" maskUnits="userSpaceOnUse" x="0" y="0" width="700" height="220">
-        <path class="reveal-wipe" d="M20,150 Q60,40 110,140 T200,140 Q230,60 260,150 L300,150 Q330,50 365,150 Q395,190 420,120
-          L450,150 Q480,60 510,150 Q540,60 570,150 L600,150 Q630,70 660,150"/>
-      </mask>
-    </defs>
-    <path class="stitch-path" mask="url(#stitchReveal)" d="M20,150 Q60,40 110,140 T200,140 Q230,60 260,150 L300,150 Q330,50 365,150 Q395,190 420,120
-      L450,150 Q480,60 510,150 Q540,60 570,150 L600,150 Q630,70 660,150"/>
-    <g class="needle-group">
-      <g class="needle-icon">
-        <line x1="-4" y1="-38" x2="4" y2="38"/>
-        <ellipse cx="-6" cy="-42" rx="4.5" ry="7"/>
-        <animateMotion dur="2.6s" fill="freeze" rotate="auto"
-          path="M20,150 Q60,40 110,140 T200,140 Q230,60 260,150 L300,150 Q330,50 365,150 Q395,190 420,120
-          L450,150 Q480,60 510,150 Q540,60 570,150 L600,150 Q630,70 660,150"/>
-      </g>
-    </g>
-  </svg>
-  <div class="intro-sub">Ściegiem, ręcznie, na miarę</div>
-</div>
-
 <header id="siteHeader">
   <nav class="wrap">
     <a href="#top" class="brand">Maria Sysło‑Mrówka<small>Pracownia Krawiecka · Kraków</small></a>
@@ -53,7 +29,10 @@
 </header>
 
 <main id="top">
-  <section class="hero hero-bg">
+  <section class="hero">
+    <div class="hero-bg-wrap" aria-hidden="true">
+      <img class="hero-bg-img" src="images/diplomas.jpg" alt="">
+    </div>
     <div class="wrap">
       <div class="hero-card">
         <p class="eyebrow">Kraków, ul. Dietla 48 — od 1986 roku</p>
@@ -69,9 +48,9 @@
     <div class="scroll-cue"><span class="line"></span> Przewiń</div>
   </section>
 
-  <div class="stitch"><svg preserveAspectRatio="none" viewBox="0 0 1000 14"><path d="M0,7 L1000,7"/></svg></div>
+  <div class="stitch reveal"><svg preserveAspectRatio="none" viewBox="0 0 1000 14"><path d="M0,7 L1000,7"/></svg></div>
 
-  <section id="o-pracowni">
+  <section id="o-pracowni" class="reveal-section">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">O pracowni</p>
@@ -97,7 +76,7 @@
     </div>
   </section>
 
-  <section id="maria">
+  <section id="maria" class="reveal-section">
     <div class="wrap maria-grid">
       <p class="quote reveal">„Krawiectwo to moja pasja. Zajmuję się tym od lat.”</p>
       <div class="maria-bio reveal">
@@ -113,9 +92,9 @@
     </div>
   </section>
 
-  <div class="stitch dark"><svg preserveAspectRatio="none" viewBox="0 0 1000 14"><path d="M0,7 L1000,7"/></svg></div>
+  <div class="stitch dark reveal"><svg preserveAspectRatio="none" viewBox="0 0 1000 14"><path d="M0,7 L1000,7"/></svg></div>
 
-  <section id="oferta">
+  <section id="oferta" class="reveal-section">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Oferta</p>
@@ -149,7 +128,7 @@
     </div>
   </section>
 
-  <section id="realizacje" class="realizacje">
+  <section id="realizacje" class="realizacje reveal-section">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Realizacje</p>
@@ -200,9 +179,9 @@
     </div>
   </section>
 
-  <div class="stitch dark"><svg preserveAspectRatio="none" viewBox="0 0 1000 14"><path d="M0,7 L1000,7"/></svg></div>
+  <div class="stitch dark reveal"><svg preserveAspectRatio="none" viewBox="0 0 1000 14"><path d="M0,7 L1000,7"/></svg></div>
 
-  <section id="cennik">
+  <section id="cennik" class="reveal-section">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Cennik</p>
@@ -221,7 +200,7 @@
     </div>
   </section>
 
-  <section id="kontakt">
+  <section id="kontakt" class="reveal-section">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Kontakt</p>
