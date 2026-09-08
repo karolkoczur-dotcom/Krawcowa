@@ -81,17 +81,13 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;}
 }
 .hero-bg-wrap{position:absolute;inset:0;overflow:hidden;z-index:0;}
 .hero-bg-img{
-  width:100%;height:100%;object-fit:cover;object-position:center 35%;
-  transform:scale(1);
-  animation:heroSlowZoom 24s ease-in-out infinite alternate;
-}
-@keyframes heroSlowZoom{
-  0%{transform:scale(1) translate(0,0);}
-  100%{transform:scale(1.09) translate(-1%,-1%);}
+  width:100%;height:115%;object-fit:cover;object-position:center 35%;
+  transform:translateY(0);
+  will-change:transform;
 }
 .hero-card{
   position:relative;z-index:1;
-  max-width:680px;
+  max-width:760px;
   background:rgba(255,255,255,0.96);
   padding:48px 46px;
   border-left:3px solid var(--brass);
@@ -149,9 +145,19 @@ section{padding:96px 0;}
 .timeline .yr{font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--brass-deep);letter-spacing:0.08em;}
 .timeline p{margin-top:5px;font-size:0.92rem;max-width:44ch;}
 .about-side{background:var(--paper-dim);color:var(--ink);padding:36px 32px;position:relative;border:1px solid rgba(28,28,26,0.06);}
-.about-side img{width:96px;margin-bottom:18px;}
 .about-side p{font-size:0.86rem;color:var(--pencil);font-weight:300;}
 .about-side .eyebrow{margin-bottom:10px;}
+
+.award-badge{
+  display:flex;align-items:center;gap:20px;
+  margin:28px 0;padding:18px 22px;
+  background:linear-gradient(135deg, rgba(193,157,99,0.14), rgba(193,157,99,0.04));
+  border:1px solid rgba(193,157,99,0.4);
+}
+.award-badge img{width:64px;height:64px;flex-shrink:0;}
+.award-badge .eyebrow{margin-bottom:4px;color:var(--brass-deep);}
+.award-badge p{margin:0;font-size:0.92rem;color:var(--pencil);}
+.award-badge p strong{color:var(--ink);font-weight:600;}
 
 /* ---------- MARIA ---------- */
 #maria{background:var(--paper-dim);color:var(--ink);}
@@ -250,6 +256,7 @@ footer .foot-links{margin-top:8px;display:flex;gap:16px;justify-content:center;f
 @media (max-width:900px){
   .about-grid,.maria-grid,.oferta-cols,.contact-grid{grid-template-columns:1fr;}
   .hero-card{max-width:100%;padding:32px 26px;}
+  .award-badge{flex-direction:column;align-items:flex-start;text-align:left;}
   .editorial-block,.editorial-block.reverse{grid-template-columns:1fr;min-height:0;}
   .editorial-media,.editorial-block.reverse .editorial-media{order:1;}
   .editorial-text,.editorial-block.reverse .editorial-text{order:2;padding:28px 28px 40px;}
