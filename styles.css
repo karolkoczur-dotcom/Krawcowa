@@ -154,7 +154,7 @@ section{padding:96px 0;}
   background:linear-gradient(135deg, rgba(193,157,99,0.14), rgba(193,157,99,0.04));
   border:1px solid rgba(193,157,99,0.4);
 }
-.award-badge img{width:64px;height:64px;flex-shrink:0;}
+.award-badge img{width:110px;height:110px;flex-shrink:0;}
 .award-badge .eyebrow{margin-bottom:4px;color:var(--brass-deep);}
 .award-badge p{margin:0;font-size:0.92rem;color:var(--pencil);}
 .award-badge p strong{color:var(--ink);font-weight:600;}
@@ -192,12 +192,12 @@ section{padding:96px 0;}
 #realizacje{background:var(--paper);padding-bottom:0;}
 .editorial-block{
   display:grid;grid-template-columns:1.05fr 1fr;align-items:center;
-  max-width:1350px;margin:0 auto 4px;min-height:340px;
+  max-width:1350px;margin:0 auto 4px;min-height:460px;
 }
 .editorial-block.reverse{grid-template-columns:1fr 1.05fr;}
 .editorial-media{order:1;height:100%;overflow:hidden;align-self:stretch;}
 .editorial-block.reverse .editorial-media{order:2;}
-.editorial-media img{width:100%;height:100%;min-height:340px;max-height:380px;object-fit:cover;display:block;}
+.editorial-media img{width:100%;height:100%;min-height:460px;max-height:520px;object-fit:cover;display:block;}
 .editorial-text{order:2;padding:40px 64px;}
 .editorial-block.reverse .editorial-text{order:1;}
 .editorial-text h3{font-size:clamp(1.2rem,2vw,1.55rem);font-weight:500;margin:8px 0 12px;}
@@ -260,7 +260,7 @@ footer .foot-links{margin-top:8px;display:flex;gap:16px;justify-content:center;f
   .editorial-block,.editorial-block.reverse{grid-template-columns:1fr;min-height:0;}
   .editorial-media,.editorial-block.reverse .editorial-media{order:1;}
   .editorial-text,.editorial-block.reverse .editorial-text{order:2;padding:28px 28px 40px;}
-  .editorial-media img{min-height:240px;max-height:280px;}
+  .editorial-media img{min-height:300px;max-height:360px;}
   .navlinks{
     position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);background:var(--white);
     flex-direction:column;justify-content:center;align-items:flex-start;padding:0 40px;gap:22px;
