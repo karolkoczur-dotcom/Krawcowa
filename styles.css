@@ -160,8 +160,8 @@ section{padding:96px 0;}
 .timeline .yr{font-family:'Space Mono',monospace;font-size:1.15rem;color:var(--brass-deep);letter-spacing:0.04em;font-weight:700;}
 .timeline p{margin-top:5px;font-size:0.92rem;max-width:44ch;}
 .about-side{background:var(--paper-dim);color:var(--ink);padding:36px 32px;position:relative;border:1px solid rgba(28,28,26,0.06);}
-.about-side p{font-size:0.86rem;color:var(--pencil);font-weight:300;}
-.about-side .eyebrow{margin-bottom:10px;}
+.about-side p{font-size:1.05rem;color:var(--pencil);font-weight:300;}
+.about-side .eyebrow{margin-bottom:10px;font-size:0.9rem;}
 
 .award-badge{
   display:flex;align-items:center;gap:20px;
