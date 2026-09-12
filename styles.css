@@ -183,7 +183,7 @@ section{padding:96px 0;}
 .award-badge p strong{color:var(--ink);font-weight:600;}
 
 /* ---------- MARIA ---------- */
-#maria{background:var(--paper-dim);color:var(--ink);}
+#maria{background:var(--white);color:var(--ink);}
 .maria-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;}
 .quote{
   font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:clamp(1.3rem,2.1vw,1.7rem);
