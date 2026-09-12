@@ -44,3 +44,14 @@ if (heroBgWrap && heroSection && !prefersReducedMotion) {
   });
   updateHeroParallax();
 }
+
+// ---------- Hero background slider (crossfade between images) ----------
+const heroSlides = document.querySelectorAll('.hero-bg-img');
+if (heroSlides.length > 1) {
+  let currentSlide = 0;
+  setInterval(() => {
+    heroSlides[currentSlide].classList.remove('is-active');
+    currentSlide = (currentSlide + 1) % heroSlides.length;
+    heroSlides[currentSlide].classList.add('is-active');
+  }, 6000);
+}
