@@ -45,13 +45,49 @@ if (heroBgWrap && heroSection && !prefersReducedMotion) {
   updateHeroParallax();
 }
 
-// ---------- Hero background slider (crossfade between images) ----------
-const heroSlides = document.querySelectorAll('.hero-bg-img');
-if (heroSlides.length > 1) {
+// ---------- Hero background slider (rotating set of transition effects) ----------
+const heroSlides = document.querySelectorAll('.hero-slide');
+if (heroSlides.length > 1 && !prefersReducedMotion) {
+  const effects = ['fade', 'slide', 'zoomblur'];
+  let effectIndex = 0;
   let currentSlide = 0;
+
+  // stan "startowy" kazdego efektu (przed wjazdem) - bez tranzycji
+  function setRestingState(el, effect) {
+    el.style.transition = 'none';
+    if (effect === 'slide') {
+      el.style.transform = 'translateX(6%)';
+      el.style.filter = 'none';
+    } else if (effect === 'zoomblur') {
+      el.style.transform = 'scale(1.12)';
+      el.style.filter = 'blur(18px)';
+    } else {
+      el.style.transform = 'none';
+      el.style.filter = 'none';
+    }
+    void el.offsetHeight; // wymuszenie reflow
+    el.style.transition = '';
+  }
+
+  function setActiveState(el) {
+    el.style.transform = 'translateX(0) scale(1)';
+    el.style.filter = 'blur(0)';
+  }
+
   setInterval(() => {
-    heroSlides[currentSlide].classList.remove('is-active');
-    currentSlide = (currentSlide + 1) % heroSlides.length;
-    heroSlides[currentSlide].classList.add('is-active');
+    const outgoing = heroSlides[currentSlide];
+    const nextIndex = (currentSlide + 1) % heroSlides.length;
+    const incoming = heroSlides[nextIndex];
+    const effect = effects[effectIndex % effects.length];
+    effectIndex++;
+
+    setRestingState(incoming, effect);
+    requestAnimationFrame(() => {
+      outgoing.classList.remove('is-active');
+      incoming.classList.add('is-active');
+      setActiveState(incoming);
+    });
+
+    currentSlide = nextIndex;
   }, 6000);
 }
