@@ -91,3 +91,27 @@ if (heroSlides.length > 1 && !prefersReducedMotion) {
     currentSlide = nextIndex;
   }, 6000);
 }
+
+// ---------- Divider photos parallax (images between sections drift on scroll) ----------
+const dividerImgs = Array.from(document.querySelectorAll('.section-divider-photo img'));
+if (dividerImgs.length && !prefersReducedMotion) {
+  let dividerTicking = false;
+  function updateDividerParallax() {
+    const viewportH = window.innerHeight;
+    dividerImgs.forEach(img => {
+      const rect = img.parentElement.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < viewportH) {
+        const centerOffset = (rect.top + rect.height / 2) - viewportH / 2;
+        img.style.transform = `translateY(${centerOffset * -0.15}px)`;
+      }
+    });
+    dividerTicking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!dividerTicking) {
+      requestAnimationFrame(updateDividerParallax);
+      dividerTicking = true;
+    }
+  });
+  updateDividerParallax();
+}
