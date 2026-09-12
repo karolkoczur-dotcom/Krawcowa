@@ -81,10 +81,14 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;}
 }
 .hero-bg-wrap{position:absolute;inset:0;overflow:hidden;z-index:0;}
 .hero-bg-img{
+  position:absolute;top:0;left:0;
   width:100%;height:115%;object-fit:cover;object-position:center 35%;
   transform-origin:center center;
-  animation:heroBreathe 16s ease-in-out infinite alternate;
+  opacity:0;
+  transition:opacity 1.8s ease-in-out;
+  animation:heroBreathe 18s ease-in-out infinite alternate;
 }
+.hero-bg-img.is-active{opacity:1;}
 @keyframes heroBreathe{
   0%{transform:scale(1);}
   100%{transform:scale(1.06);}
