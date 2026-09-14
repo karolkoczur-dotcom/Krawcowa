@@ -250,7 +250,7 @@ section{padding:96px 0;}
 .btn-instagram:hover{background:var(--brass);color:var(--white);}
 
 /* ---------- CENNIK ---------- */
-#cennik{background:var(--paper-dim);color:var(--ink);}
+#cennik{background:var(--white);color:var(--ink);}
 .ticket{display:flex;flex-wrap:wrap;gap:0;border:1px dashed var(--brass);max-width:720px;background:var(--white);}
 .ticket div{flex:1 1 300px;padding:26px;}
 .ticket div:first-child{border-right:1px dashed var(--brass);}
