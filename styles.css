@@ -191,7 +191,7 @@ section{padding:96px 0;}
   font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:clamp(1.3rem,2.1vw,1.7rem);
   line-height:1.4;color:var(--ink);border-left:2px solid var(--brass);padding-left:22px;
 }
-.maria-bio p{color:var(--pencil);font-weight:300;margin-bottom:12px;font-size:0.94rem;}
+.maria-bio p{color:var(--ink);font-weight:300;margin-bottom:12px;font-size:0.94rem;}
 .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
 .badge{
   font-family:'Space Mono',monospace;font-size:0.64rem;letter-spacing:0.04em;
