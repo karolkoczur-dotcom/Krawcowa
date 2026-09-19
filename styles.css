@@ -188,7 +188,7 @@ section{padding:96px 0;}
 #maria{background:var(--white);color:var(--ink);}
 .maria-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;}
 .maria-portrait-col img{
-  width:100%;max-width:340px;aspect-ratio:2/3;object-fit:cover;
+  width:100%;max-width:220px;aspect-ratio:2/3;object-fit:cover;object-position:center 15%;
   margin-bottom:26px;border:1px solid rgba(28,28,26,0.1);
 }
 .quote{
