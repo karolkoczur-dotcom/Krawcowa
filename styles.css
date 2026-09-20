@@ -188,7 +188,7 @@ section{padding:96px 0;}
 #maria{background:var(--white);color:var(--ink);}
 .maria-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;}
 .maria-portrait-frame{
-  width:300px;max-width:100%;aspect-ratio:2/3;overflow:hidden;
+  width:380px;max-width:100%;aspect-ratio:2/3;overflow:hidden;
   margin-bottom:26px;border:1px solid rgba(28,28,26,0.1);
 }
 .maria-portrait-frame img{
@@ -305,12 +305,12 @@ footer .foot-links{margin-top:8px;display:flex;gap:16px;justify-content:center;f
 .policy .updated{margin-top:-4px;}
 
 @media (max-width:900px){
-  .simple-grid{grid-template-columns:repeat(2,1fr);}
+  .simple-grid{grid-template-columns:1fr;}
   .section-divider-photo{height:38vh;min-height:220px;}
   .divider-caption{left:16px;right:16px;bottom:16px;font-size:0.86rem;padding:10px 16px;max-width:none;}
   .about-grid,.maria-grid,.oferta-cols,.contact-grid{grid-template-columns:1fr;}
   .hero-card{max-width:100%;padding:32px 26px;}
-  .award-badge{flex-direction:column;align-items:flex-start;text-align:left;}
+  .award-badge{flex-direction:column;align-items:center;text-align:center;}
   .editorial-block,.editorial-block.reverse{grid-template-columns:1fr;min-height:0;}
   .editorial-media,.editorial-block.reverse .editorial-media{order:1;}
   .editorial-text,.editorial-block.reverse .editorial-text{order:2;padding:28px 28px 40px;}
